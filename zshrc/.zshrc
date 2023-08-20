@@ -136,3 +136,11 @@ source $ZSH/oh-my-zsh.sh
 if [[ $TERM_PROGRAM == "WarpTerminal" ]]; then
     eval "$(starship init zsh)"
 fi
+
+
+# adding colorls -> ls command by Gambhir sharma on 24th July 2023
+alias ls="colorls"
+
+# Fig post block. Keep at the bottom of this file.
+[[ -f "$HOME/.fig/shell/zshrc.post.zsh" ]] && builtin source "$HOME/.fig/shell/zshrc.post.zsh"
+
