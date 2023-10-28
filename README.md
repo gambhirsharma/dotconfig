@@ -1,5 +1,8 @@
-# Tmux
-![image](https://user-images.githubusercontent.com/69895353/224534605-592bdf49-3cce-4d04-b2cb-189584d2bcfd.png)
+# This repo contain all my config files. 
 
-# Vs-Code
-![image](https://user-images.githubusercontent.com/69895353/224825319-8c4f1427-5c32-4bd2-9750-4f4a3109bad0.png)
+I have organized my config files in different branches. 
+
+- [Mac](https://github.com/gambhirsharma/dotconfig/tree/mac)
+- [Arch](https://github.com/gambhirsharma/dotconfig/tree/old-files) mostly old files. 
+- [Neovim](https://github.com/gambhirsharma/dotconfig/tree/nvim), build on top of Nvchad.
+- [Hyperland Arch](https://github.com/gambhirsharma/dotconfig-hypr) another repo. 
