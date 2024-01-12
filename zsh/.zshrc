@@ -1,14 +1,17 @@
 # History
-HISTSIZE=110000
-SAVEHIST=100000
-HISTFILE=$ZDOTDIR/.histfile
+# HISTSIZE=110000
+# SAVEHIST=100000
+# HISTFILE=$ZDOTDIR/.histfile
 
-zstyle :compinstall $ZDOTDIR/.zshrc
-autoload -Uz compinit
-compinit
+# zstyle :compinstall $ZDOTDIR/.zshrc
+# autoload -Uz compinit
+# compinit
 
 ZSHRC_PATH="$(readlink $HOME/.config/zsh)/.zshrc" # get the path of the .zshrc symlink
 ZSH_PATH=$(dirname $ZSHRC_PATH) # get the path of the zsh folder
+
+# printf(/$ZSH_PATH)
+# printf(/$ZSHRC_PATH)
 
 # run program on terminal startup
 pfetch
@@ -16,8 +19,13 @@ pfetch
 # config
 # source $ZSH_PATH/config/alias.zsh
 # source $ZSH_PATH/config/
-source ~/.config/zsh/config/aliases.zsh	
-source ~/.config/zsh/config/zoxide.zsh
+ source ~/.config/zsh/config/aliases.zsh	
+ source ~/.config/zsh/config/zoxide.zsh
+ source ~/.config/zsh/config/func.zsh
+# source ZSH_PATH/config/aliases.zsh
+# source ZSH_PATH/config/zoxide.zsh
+# source ZSH_PATH/config/func.zsh
+ 
 
 # $$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$ END #######################################################
 
@@ -191,4 +199,5 @@ eval "$(pyenv init --path)"
 test -e "${HOME}/.iterm2_shell_integration.zsh" && source "${HOME}/.iterm2_shell_integration.zsh"
 
 
-
+alias ls="lsd"
+export PATH=$PATH:/Users/gambhirsharma/.spicetify

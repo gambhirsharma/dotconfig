@@ -1,96 +1,77 @@
-
 # all alias are here
 alias ls="lsd"
 alias ll="colorls"
 alias tree="colorls --tree"
-alias nrd="npm run dev"
 alias desktop="cd ~/Desktop/"
 alias cls="clear"
 alias coding="cd ~/Coding/"
-alias hack="docker run --rm -it bcbcarl/hollywood"
 alias cd="z"
+alias cat="bat"
 
-# search
-alias ff="fzf --preview 'bat --color=always --style=numbers --line-range=:500 {}' | xargs lz"
-
-# get weather
-alias weather="curl wttr.in/duliajan"
-
-
-# -----------------------------------------------------------------------------------
-## setting up pomodoro timer.
-alias work="timer 60m && terminal-notifier -message 'Pomodoro'\
-        -title 'Work Timer is up! Take a Break 😊'\
-        -appIcon '~/Pictures/pumpkin.png'\
-        -sound Crystal"
-
-alias rest="timer 10m && terminal-notifier -message 'Pomodoro'\
-        -title 'Break is over! Get back to work 😬'\
-        -appIcon '~/Pictures/pumpkin.png'\
-        -sound Crystal"
-
-alias sat="timer 2h30m && terminal-notifier -message 'Pomodoro'\
-        -title 'Break is over! Get back to work 😬'\
-        -appIcon '~/Pictures/pumpkin.png'\
-        -sound Crystal"
+# brew shortcuts
+alias bl="brew services list"
+alias bs="brew services stop --all"
+alias mongodb="brew services start mongodb-community"
+alias redis="brew services start redis"
 
 
-# ---------------------------------------------------------------------
-# switching config in neovim
-alias nvim-lazy="NVIM_APPNAME=LazyVim nvim"
-alias lz="NVIM_APPNAME=LazyVim nvim"
-alias nvim-kick="NVIM_APPNAME=kickstart nvim"
-alias nvim-chad="NVIM_APPNAME=NvChad nvim"
-alias nv="NVIM_APPNAME=NvChad nvim"
-alias nvim-astro="NVIM_APPNAME=AstroNvim nvim"
+# For JavaScript work
+alias nrd="npm run dev"
+alias nr="npm run"
+alias nrs="npm run start"
+alias nrb="npm run build"
+alias ni="npm install"
 
-# alias nv-test="NVIM_APPNAME=NvChadTest nvim"
-alias nvim-prime="NVIM_APPNAME=NvimPrime nvim"
+alias prd="pnpm run dev"
+alias pr="pnpm run"
+alias prs="pnpm run start"
+alias prb="pnpm run build"
+alias pi="pnpm install"
 
-function nvims() {
-  items=("default" "kickstart" "LazyVim" "NvChad" "AstroNvim" "NvimPrime")
-  config=$(printf "%s\n" "${items[@]}" | fzf --prompt=" Neovim Config  " --height=~50% --layout=reverse --border --exit-0)
-  if [[ -z $config ]]; then
-    echo "Nothing selected"
-    return 0
-  elif [[ $config == "default" ]]; then
-    config=""
-  fi
-  NVIM_APPNAME=$config nvim $@
-}
-bindkey -s ^n "nvims\n"
-# ----------------------------------------------------------------------
+alias brd="bun run dev"
+alias br="bun run"
+alias brs="bun run start"
+alias brb="bun run build"
 
-## opening Applications
-function apps() {
-  local apps
-  apps=$(ls /Applications)
-  selected_app=$(echo "$apps" | fzf --prompt="🚀 Open Application 🚀 " --height=~50% --layout=reverse --border --exit-0)
-  if [[ -z $selected_app ]]; then
-    echo "Nothing selected"
-    return 0
-  fi
-  open -a "$selected_app"
-}
-bindkey -s ^a "apps\n"
-# ------------------------------------------------------------------------
-# Notes 
-function note(){
-  cd ~/Documents//Notes
-  lz ~/Documents/Notes/
-}
+# for Rust
+alias cor="cargo run"
+alias cn="cargo new"
 
-# Rustvibes 
-function rv() { 
-  local soundpack
-  soundpack=$(find ~/Music/Soundpacks/ -maxdepth 1 -type d -exec basename {} \; | fzf --height 50% --preview 'ls -l {}')
+# Git alias
+# website: https://jonsuh.com/blog/git-command-line-shortcuts/
+alias ga='git add'
+alias gaa='git add .'
+alias gaaa='git add --all'
+alias gau='git add --update'
+alias gb='git branch'
+alias gbd='git branch --delete '
+alias gc='git commit'
+alias gcm='git commit --message'
+alias gcf='git commit --fixup'
+alias gco='git checkout'
+alias gcob='git checkout -b'
+alias gcom='git checkout master'
+alias gcos='git checkout staging'
+alias gcod='git checkout develop'
+alias gd='git diff'
+alias gda='git diff HEAD'
+alias gi='git init'
+alias glg='git log --graph --oneline --decorate --all'
+alias gld='git log --pretty=format:"%h %ad %s" --date=short --all'
+alias gm='git merge --no-ff'
+alias gma='git merge --abort'
+alias gmc='git merge --continue'
+alias gp='git pull'
+alias gpr='git pull --rebase'
+alias gr='git rebase'
+alias gs='git status'
+alias gss='git status --short'
+alias gst='git stash'
+alias gsta='git stash apply'
+alias gstd='git stash drop'
+alias gstl='git stash list'
+alias gstp='git stash pop'
+alias gsts='git stash save'
+# Git log find by commit message
+function glf() { git log --all --grep="$1"; }
 
-  if [ -n "$soundpack" ]; then
-    local soundpack_path
-    soundpack_path=~/Music/Soundpacks/"$soundpack" #My soundpack are in ~/Mucic/Soundpacks/
-    echo "Selected Soundpack: $soundpack"
-    rustyvibes "$soundpack_path" # -v <volume> (0-100 | optional)
-  else
-    echo "No Soundpack selected."
-  fi
-}
